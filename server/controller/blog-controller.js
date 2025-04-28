@@ -6,8 +6,9 @@ const User = require("../model/User");
 const getAllBlogs = async(req,res,next) =>{
     let blogs;
     try{
-        blogs = await Blog.find();
-    }catch(e){
+        blogs = await Blog.find().populate("user");
+    }
+    catch(e){
         console.log(e);
     }
 
@@ -128,7 +129,7 @@ const getById = async (req,res,next) =>{
     if(!blog){
         return res.status(500).json({ message : "not found"});
     }
-    
+    console.log(res);
     return res.status(200).json({blog});
 }
 
