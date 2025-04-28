@@ -11,6 +11,8 @@ import {
 import React from "react";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useStyles } from "./utils";
@@ -58,6 +60,14 @@ const Blogs = ({ title, desc, img, user, isUser, id }) => {
             </IconButton>
           </Box>
         )}
+        {!isUser && (<Box display="flex">
+          <IconButton sx={{ marginLeft: "auto" }}>
+            <ThumbUpIcon color="success" />
+          </IconButton>
+          <IconButton>
+            <ThumbDownIcon color="error" />
+          </IconButton>
+        </Box>)}
         <CardHeader
           avatar={
             <Avatar

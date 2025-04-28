@@ -4,7 +4,6 @@ import Blog from "./Blog";
 import config from "../config";
 
 const Blogs = () => {
-  console.log(config);
   const [blogs, setBlogs] = useState();
   const sendRequest = async () => {
     const res = await axios
@@ -16,7 +15,6 @@ const Blogs = () => {
   useEffect(() => {
     sendRequest().then((data) => setBlogs(data.blogs));
   }, []);
-  console.log(blogs);
   return (
     <div>
       {blogs &&
