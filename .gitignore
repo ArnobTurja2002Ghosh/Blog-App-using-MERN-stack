@@ -1,2 +1,4 @@
 /node_modules
 /package-lock.json
+server/config/db.js
+server/yarn.lock
