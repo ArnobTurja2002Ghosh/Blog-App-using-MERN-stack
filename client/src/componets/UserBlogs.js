@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Blogs from "./Blogs";
+import Blogs from "./Blog";
 import DeleteButton from "./DeleteBlogs";
 import { makeStyles } from "@mui/styles";
 import config from "../config";
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "10px",
     marginBottom: "20px",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+    width: "50%",
   },
   blogImage: {
     width: "100%",
@@ -55,14 +56,16 @@ const UserBlogs = () => {
 
   const sendRequest = async () => {
     const res = await axios
-      .get(`http://localhost:5000/api/blogs/user/${id}`)
+      .get(`${config.BASE_URL}/api/blogs/user/${id}`)
       .catch((err) => console.log(err));
+    console.log(res);
     const data = await res.data;
     return data;
   };
 
   useEffect(() => {
     sendRequest().then((data) => setUser(data.user));
+    console.log(user);
   }, []);
 
   const handleDelete = (blogId) => {
@@ -72,26 +75,20 @@ const UserBlogs = () => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className="">
       {user &&
         user.blogs &&
         user.blogs.map((blog, index) => (
-          <div key={index} className={classes.blogContainer}>
-            <Blogs
+          <Blogs
               id={blog._id}
               isUser={true}
               title={blog.title}
-              description={blog.description}
-              imageURL={blog.image}
-              userName={user.name}
+              desc={blog.desc}
+              img={blog.img}
+              user={user.name}
+              date={new Date(blog.date).toLocaleDateString()}
             />
-            <img
-              className={classes.blogImage}
-              src={blog.image}
-              alt={blog.title}
-            />
-            <DeleteButton blogId={blog._id} onDelete={handleDelete} />
-          </div>
+          
         ))}
     </div>
   );
