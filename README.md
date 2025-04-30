@@ -57,9 +57,17 @@ cd client && npm start
 
 6. Access the application in your web browser at [http://localhost:3000](http://localhost:3000).
 
+## Arnob's Contribution
+The image below is a visual representation of some of the flaws and bugs in the original project:
+
+![Screenshot 2](https://user-images.githubusercontent.com/67452985/172217368-76264e6e-8373-484d-9cd0-3af5920754b1.png)
+
+- Why is there a colon preceding "desc of blog is here"? Turns out, on the left of the colon, the name of the user who posted the blog was expected to appear, but because of a bug the name was not appearing. Fixed.
+- There should be an edit and a delete button on the top-right corner of every blog posted by the user currently signed in. Why? Because **update blog** and **delete blog** are claimed to be two of the functionalities of the original project. Added this feature.
+
 ## Contributing
 
-We welcome contributions from the community. If you'd like to contribute to this project, please feel free to open an issue or Make a PR.
+We welcome contributions from the community. If you'd like to contribute to this project, please feel free to open an issue and make a pull request to this forked repository because this repository is ahead of the original one. The owner of the original repository [Khushi Patel](https://github.com/khushi2706) is neither attending to issues and pull requests, nor responding to messages (tried to contact through LinkedIn) and the original project looks inactive for weeks. If the original repo gets active later at some point, since this repo is forked from the original, your contributions here can be merged to the original anyway.
 
 
 ## Acknowledgments
